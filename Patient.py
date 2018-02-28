@@ -1,9 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Tue Feb 27 13:33:10 2018
 
-@author: aziza
-"""
 
 class Patient:
     #Patient class 
