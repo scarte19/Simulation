@@ -8,13 +8,17 @@ import numpy as np
 import Patient as p
 
 def Sim(num_patients):
+    #Each loop represents a new patient
     for i in range(num_patients):
-            age = np.random.randint(18, 60) #random age
-            hui = round(np.random.uniform(.7 , .9), 2) #random health utility index
-            hba1c = round(np.random.uniform(7,14), 2) #random hba1c level
-            patient = p.Patient(age,hui,hba1c) #patient instance
+        """
+        Generating a new age, hui, and hba1c for every loop.
+        """
+        age = np.random.randint(18, 60) # random integer between 18 and 60
+        hui = round(np.random.uniform(.7 , .9), 2) #random health utility index
+        hba1c = round(np.random.uniform(6.5,14), 2) #random hba1c %
+        patient = p.Patient(age,hui,hba1c) #patient instance
             
             
             
 
-Simulation = Sim(5)
+Simulation = Sim(5) #call sim function
