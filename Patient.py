@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+import numpy as np
 
 class Patient:
     #Patient class 
@@ -32,7 +32,7 @@ class Patient:
         pass
     """
     
-    Input is A1C and HUI , out put is updated HUI
+    Input is patient's A1C,HUI and if mHealth is present , output is updated HUI
     Two methods to update patients attributes, quarterly update and yearly update
     - Quarterly update will update HbA1C, and HUI given that there was a ~ 1%change
     - Yearly Update will update HUI given that the patient developed a new complication
@@ -41,6 +41,21 @@ class Patient:
         - Each complication decreases HUI, this will occur every year from the time he developed that complication
          until the patient dies or simulation reaches 100 years.
     """
-    def y_update(self,A1C, HUI):
+    def q_update(self, A1C, hui, mHealth):
+        self.hba1c = A1C
+        self.hui = hui
+        if mHealth == True: #IF mhealth is present A1C changes by given range
+            q_hba1c = A1C + round(np.random.uniform(-1,-0.5),2)
+        else: #if mhealth is not present A1C changes by given range
+            q_hba1c = A1C + round(np.random.uniform(-0.5, 1.0), 2)
+        return q_hba1c
+    
+    def y_update(self, A1C, hui, age, mHealth):
+        self.hba1c = A1C
+        self.hui = hui
+        self.age = age 
+        age+= 1
         #return updated hui
         pass
+    
+    
