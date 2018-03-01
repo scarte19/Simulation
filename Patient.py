@@ -20,10 +20,19 @@ class Patient:
     Complications will be determined by chance? and complication chance changes based on
     the yearly HbA1C level.
     """
-    def complication(self):
+    def det_complication(self,A1C):
+        #return complication
         pass
     
     """
+    Patient complication will keep record on what complication patient is suffering from
+    should keep a list.
+    """
+    def complications(self):
+        pass
+    """
+    
+    Input is A1C and HUI , out put is updated HUI
     Two methods to update patients attributes, quarterly update and yearly update
     - Quarterly update will update HbA1C, and HUI given that there was a ~ 1%change
     - Yearly Update will update HUI given that the patient developed a new complication
@@ -32,3 +41,6 @@ class Patient:
         - Each complication decreases HUI, this will occur every year from the time he developed that complication
          until the patient dies or simulation reaches 100 years.
     """
+    def y_update(self,A1C, HUI):
+        #return updated hui
+        pass
