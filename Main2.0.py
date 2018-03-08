@@ -7,7 +7,7 @@ Created on Thu Mar  1 07:29:44 2018
 import numpy as np 
 import Patient as p
 
-def Sim(num_patients):
+def Sim(num_patients, mHealth):
     #Each loop represents a new patient
     for i in range(num_patients):
         """
@@ -25,4 +25,23 @@ def Sim(num_patients):
         quarter = 0
         print("starting age= " + str(patient.age))
         while True:
-            q_update = patient.q_update(patient.hba1c,patient.hui,mHealth)
+            q_init = patient.hba1c #HbA1c at the beggining of the quarter
+            q_final = patient.q_update(patient.hba1c,patient.hui, mHealth) #HbA1c at the end of the quarter
+            quarter+= 1
+            #If the change in HbA1C is between 0.8 and 1.2 and +ive (means it increased), decrease HUI
+            if 0.8 <= abs(q_final - q_init) <= 1.2 and q_final - q_init > 0:
+                patient.hui+= -0.03
+            if quarter % 4 == 0: #If a year has passed
+                #patient.hui+= patient.det_complication(patient.hba1c)
+                pass
+        
+            #While loop break conditions
+            if quarter == 40 or patient.hui <= 0.1 or patient.age >= 90:
+                break
+            
+        print('quarter = ' + str(quarter))
+        print("patient age =" + str(patient.age))
+        print("patient hui =" + str(round(patient.hui,2)))
+        print("patient hba1c =" + str(patient.hba1c))
+
+Simulation = Sim(1,False)  

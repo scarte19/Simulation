@@ -21,9 +21,17 @@ class Patient:
     the yearly HbA1C level.
     """
     def det_complication(self,A1C):
-        #return complication
-        pass
-    
+        complication_dict = {"Blindness":-0.170,
+                            "Amputation":-0.105,
+                            "Neuropathy":-0.065,
+                            "Stroke":-0.044,
+                            "Nothing":0.00
+                            }
+        #complication_list = list(complication_dict.values)
+        #prob_complications = np.random.choice(len(5),1)
+        #print("complication is: " + str(prob_complications))
+        #return prob_complications
+        #return None
     """
     Patient complication will keep record on what complication patient is suffering from
     should keep a list.
@@ -45,7 +53,7 @@ class Patient:
         self.hba1c = A1C
         self.hui = hui
         if mHealth == True: #IF mhealth is present A1C changes by given range
-            q_hba1c = A1C + round(np.random.uniform(-1,-0.5),2)
+            q_hba1c = A1C + round(np.random.uniform(-1, 0.8),2)
         else: #if mhealth is not present A1C changes by given range
             q_hba1c = A1C + round(np.random.uniform(-0.5, 1.0), 2)
         return q_hba1c
@@ -53,8 +61,8 @@ class Patient:
     def y_update(self, A1C, hui, age, mHealth):
         self.hba1c = A1C
         self.hui = hui
-        self.age = age 
-        age+= 1
+        self.age = age + 1
+        
         #return updated hui
         pass
     

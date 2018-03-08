@@ -29,7 +29,6 @@ def Sim(num_patients, mHealth):
             # 1% change during quarter visit and HbA1C increased
             if 0.9 <= abs(q_hba1c - patient.hba1c) <= 1.1 and q_hba1c - patient.hba1c > 0: 
                 patient.hui+= -0.03
-                print("decreased hui")
 #            elif patient.hui < 1:
 #                patient.hui+= 0.03
             if quarter % 4 == 0: #year has passed
