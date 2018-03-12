@@ -33,10 +33,9 @@ def Sim(num_patients, mHealth):
                 patient.hui+= -0.03
             if quarter % 4 == 0: #If a year has passed
                 #patient.hui+= patient.det_complication(patient.hba1c)
-                pass
-        
+                patient.age+=1
             #While loop break conditions
-            if quarter == 40 or patient.hui <= 0.1 or patient.age >= 90:
+            if quarter == 120 or patient.hui <= 0.1 or patient.age >= 90:
                 break
             
         print('quarter = ' + str(quarter))
