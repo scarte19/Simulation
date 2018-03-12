@@ -32,13 +32,15 @@ def Sim(num_patients, mHealth):
             if 0.8 <= abs(q_final - q_init) <= 1.2 and q_final - q_init > 0:
                 patient.hui+= -0.03
             if quarter % 4 == 0: #If a year has passed
-                #patient.hui+= patient.det_complication(patient.hba1c)
+                compl = patient.det_complication(patient.hba1c) #determine the complication penalty
+                patient.hui+= compl  # add complication penalty to HUI
+                #print("complication is : " + str(compl))
                 patient.age+=1
             #While loop break conditions
-            if quarter == 120 or patient.hui <= 0.1 or patient.age >= 90:
+            if quarter == 120 or patient.hui <= 0 or patient.age >= 90:
                 break
             
-        print('quarter = ' + str(quarter))
+        #print('quarter = ' + str(quarter))
         print("patient age =" + str(patient.age))
         print("patient hui =" + str(round(patient.hui,2)))
         print("patient hba1c =" + str(patient.hba1c))

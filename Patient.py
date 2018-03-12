@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import numpy as np
+import random as rand
 
 class Patient:
     #Patient class 
@@ -27,10 +28,13 @@ class Patient:
                             "Stroke":-0.044,
                             "Nothing":0.00
                             }
-        #complication_list = list(complication_dict.values)
-        #prob_complications = np.random.choice(len(5),1)
+        complication_list = list(complication_dict.keys())
+        complication_prob = p=[0.15,0.15,0.15,0.15,0.40]
+        complication = np.random.choice(complication_list, 1, complication_prob)
+        penalty = complication_dict.get(complication[0])
+        print("penalty :" + str(penalty))
         #print("complication is: " + str(prob_complications))
-        #return prob_complications
+        return penalty
         #return None
     """
     Patient complication will keep record on what complication patient is suffering from

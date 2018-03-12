@@ -1,3 +1,10 @@
 # -*- coding: utf-8 -*-
 class Doctor:
-    pass
+    
+    
+    
+    
+    
+    x = [1,2,3,4,5]
+    lenx = len(x)
+    print(lenx)
